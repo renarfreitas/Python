@@ -22,7 +22,7 @@ def query(conexao, sql):
   except Error as ex:
     print(ex)
   finally:
-    print("Operação Realizad com sucesso")
+    print("Operação Realizda com sucesso")
     #conexao.close()
 
 def consultar(conexao, sql):
