@@ -1,10 +1,10 @@
 import sqlite3
 from sqlite3 import Error
 import os
-from tkinter.constants import E
 
-pastaSfw = os.path.dirname (__file__)
-nomeBanco = pastaSfw + "\\agenda.db"
+
+pastaapp = os.path.dirname (__file__)
+nomeBanco = pastaapp + "\contatos.db"
 
 def conexaoBanco():
   con = None
