@@ -16,3 +16,22 @@ a = curso.split(" ")
 print(a[0])
 print(a[1])
 print(a[2])
+
+frase = str(input(("Qual frase você deseja analisar: ?")))
+
+l = []
+
+for i in frase:
+    if i not in l:
+        l.append(i)
+    print(i)
+string = l
+string_Invertida = string[::-1]
+print("Sua palavra tem {} letras!".format(len(l)))
+print(l)
+print("Sua palavra invertida é: {}".format(string_Invertida))
+nua = str(string_Invertida)
+nua1 = nua.replace(",", "")
+nua2 = nua1.replace("'", "")
+nua3 = nua2.replace(" ", "")
+print (str(nua3))
