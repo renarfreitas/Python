@@ -5,7 +5,7 @@ from colorama import Fore, Back, Style
 
 jogarNovamente = "s"
 jogadas = 0
-quemJoga = 2
+quemJoga = 2 # 1 - CPU; 2 - Usuário
 maxJogadas = 9
 vit = "n"
 velha = [
@@ -25,11 +25,45 @@ def tela():
     print("   -----------")
     print("2:  " + velha[0][0] + " | " + velha[0][0] + " | " )
     print("Jogadas: " + Fore.GREEN + str(jogadas) + Fore.RESET)
-# Em construção...
+
+def jogadorJoga():
+    global jogadas
+    global quemJoga
+    global vit
+    global maxJogadas
+    if quemJoga == 2 and jogadas < maxJogadas:
+        try:
+            l = int(input("Linha..:"))
+            c = int(input("Coluna.:"))
+            while velha[l][c] != " ":
+                l = int(input("Linha..:"))
+                c = int(input("Coluna.:"))
+            velha[l][c] = "X"
+            quemJoga = 1
+            jogadas += 1
+        except:
+            print("Linha e ou coluna invalida")
+            
+def cpuJoga():
+    global jogadas
+    global quemJoga
+    global vit
+    global maxJogadas
+    if quemJoga == 1 and jogadas < maxJogadas:
+        l = random.randrange(0,3)
+        c = random.randrange(0,3)
+        while velha[l][c] != " ":
+            l = int(input("Linha..:"))
+            c = int(input("Coluna.:"))
+        velha[l][c] = "0"
+        jogadas += 1
+        quemJoga = 2
+
 while True:
     tela()
-    #jog
-    #cpu
+    jogadorJoga()
+    cpuJoga()
+    # Em construção...
     #vitoria
         try:
             break
