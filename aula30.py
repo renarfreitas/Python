@@ -48,14 +48,13 @@ def jogadorJoga():
 def cpuJoga():
     global jogadas
     global quemJoga
-    global vit
     global maxJogadas
     if quemJoga == 1 and jogadas < maxJogadas:
         l = random.randrange(0,3)
         c = random.randrange(0,3)
         while velha[l][c] != " ":
-            l = int(input("Linha..:"))
-            c = int(input("Coluna.:"))
+            l = random.randrange(0,3)
+            c = random.randrange(0,3)
         velha[l][c] = "O"
         jogadas += 1
         quemJoga = 2
@@ -97,7 +96,7 @@ def verificarVitoria():
         soma = 0
         idiagl = 0
         idiagc = 2
-        while idiag < 3:
+        while idiag >= 0:
             if (velha[idial][idiagc] == s):
                 soma += 1
             idiagl += 1
@@ -107,8 +106,38 @@ def verificarVitoria():
             break
     return vitoria
 
-while True:
-    tela()
-    jogadorJoga()
-    cpuJoga()
+def redefinir():
+    global velha
+    global jogadas
+    global quemJoga
+    global maxJogadas
+    global vit
+    jogadas = 0
+    quemJoga = 2
+    maxJogadas = 9
+    vit = "n"
+    velha = [
+        [" ", " ", " "],
+        [" ", " ", " "],
+        [" ", " ", " "]
+    ]
+
+while (jogarNovamente == "s"):
+
+    while True:
+        tela()
+        jogadorJoga()
+        cpuJoga()
+        tela()
+        vit = verificarVitoria()
+        if(vit != "n") or (jogadas >= maxJogadas):
+            break
+
+    print(Fore.RED + "Fim de Jogo!" + Fore.YELLvOW)
+    if(vit == "X" or vit == "O"):
+        print("Resultado: Jogador " + vit + "venceu!")
+    else:
+        print("Resultado: Empate")
+    jogarNovamente = input(Fore.BLUE + "Jogar Novamente? [s/n]: " + Fore.RESET)
+    redefinir()
 
